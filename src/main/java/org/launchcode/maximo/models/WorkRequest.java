@@ -6,6 +6,10 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class WorkRequest {
+
+    // TODO - add work order number field, dependent on id
+    // and add more fields when prepared
+
     @Id
     @GeneratedValue
     private int id;
