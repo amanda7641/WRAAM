@@ -64,7 +64,7 @@
             <tr th:each="workRequest : ${workRequests}">
                 <td th:text="${workRequest.id}"></td>
                 <td th:text="${workRequest.description}"></td>
-                <td th:text="${workRequest.building}"></td>
+                <td th:text="${workRequest.building.name}"></td>
             </tr>
         </tbody>
     </table>

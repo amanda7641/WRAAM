@@ -9,18 +9,18 @@ public class WorkRequest {
 
     // TODO - add work order number field, dependent on id
     // and add more fields when prepared
+    // should be able to make as complete - need boolean value
 
     @Id
     @GeneratedValue
     private int id;
 
     @NotNull
-    @Size(min=1, max=15)
+    @Size(min=1, max=30)
     private String description;
 
-    @NotNull
-    @Size(min=1, max=15)
-    private String building;
+    @ManyToOne
+    private Building building;
 
     public WorkRequest(){
 
@@ -42,11 +42,11 @@ public class WorkRequest {
         this.description = description;
     }
 
-    public String getBuilding() {
+    public Building getBuilding() {
         return building;
     }
 
-    public void setBuilding(String building) {
+    public void setBuilding(Building building) {
         this.building = building;
     }
 }

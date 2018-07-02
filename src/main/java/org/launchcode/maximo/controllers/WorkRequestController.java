@@ -1,7 +1,9 @@
 package org.launchcode.maximo.controllers;
 
+import org.launchcode.maximo.models.Building;
 import org.launchcode.maximo.models.WorkRequest;
 import org.launchcode.maximo.models.WorkRequestFieldType;
+import org.launchcode.maximo.models.data.BuildingDao;
 import org.launchcode.maximo.models.data.WorkRequestDao;
 import org.launchcode.maximo.models.forms.SearchForm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("workrequest")
@@ -23,6 +24,9 @@ public class WorkRequestController {
 
     @Autowired
     private WorkRequestDao workRequestDao;
+
+    @Autowired
+    private BuildingDao buildingDao;
 
     @RequestMapping(value="")
     public String index(Model model){
@@ -48,7 +52,7 @@ public class WorkRequestController {
                 else if (Integer.toString(workRequest.getId()).contains(searchForm.getKeyword().toLowerCase())){
                     filteredWorkRequests.add(workRequest);
                 }
-                else if(workRequest.getBuilding().toLowerCase().contains(searchForm.getKeyword())){
+                else if(workRequest.getBuilding().getName().toLowerCase().contains(searchForm.getKeyword())){
                     filteredWorkRequests.add(workRequest);
                 }
             }
@@ -66,7 +70,7 @@ public class WorkRequestController {
                         }
                         break;
                     case BUILDING:
-                        if (workRequest.getBuilding().toLowerCase().contains(searchForm.getKeyword())){
+                        if (workRequest.getBuilding().getName().toLowerCase().contains(searchForm.getKeyword())){
                             filteredWorkRequests.add(workRequest);
                         }
                         break;
@@ -86,22 +90,26 @@ public class WorkRequestController {
         return "workRequest/index";
     }
 
-    @RequestMapping(value="add")
+    @RequestMapping(value="add", method = RequestMethod.GET)
     public String displayAddForm(Model model){
 
         model.addAttribute("title", "New Work Request");
         model.addAttribute(new WorkRequest());
+        model.addAttribute("buildings", buildingDao.findAll());
 
         return "workRequest/add";
     }
 
     @RequestMapping(value="add", method = RequestMethod.POST)
-    public String processAddForm(Model model, @ModelAttribute @Valid WorkRequest workRequest, Errors errors){
+    public String processAddForm(Model model, @ModelAttribute @Valid WorkRequest workRequest, Errors errors, @RequestParam int buildingId){
         if (errors.hasErrors()){
             model.addAttribute("title", "New Work Request");
+            model.addAttribute("buildings", buildingDao.findAll());
             return "workRequest/add";
         }
 
+        Building build = buildingDao.findOne(buildingId);
+        workRequest.setBuilding(build);
         workRequestDao.save(workRequest);
         return "redirect:";
     }
