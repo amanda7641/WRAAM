@@ -55,16 +55,16 @@
     <table id="workRequestTable" class="table table-striped">
         <thead>
             <tr>
-                <th>Number</th>
                 <th>Description</th>
                 <th>Building</th>
+                <th>Date Requested</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="workRequest : ${workRequests}">
-                <td th:text="${workRequest.id}"></td>
                 <td th:text="${workRequest.description}"></td>
                 <td th:text="${workRequest.building.name}"></td>
+                <td th:text="${workRequest.dateRequested}"></td>
             </tr>
         </tbody>
     </table>

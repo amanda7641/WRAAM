@@ -15,14 +15,12 @@
         <tr>
             <th>Number</th>
             <th>Name</th>
-            <th>Age</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="building : ${buildings}">
             <td th:text="${building.id}"></td>
             <td th:text="${building.name}"></td>
-            <td th:text="${building.age}"></td>
         </tr>
         </tbody>
     </table>

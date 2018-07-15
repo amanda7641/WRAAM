@@ -3,9 +3,9 @@ package org.launchcode.maximo.models;
 public enum WorkRequestFieldType {
 
     ALL ("All"),
-    NUMBER ("Number"),
     DESCRIPTION ("Description"),
-    BUILDING ("Building");
+    BUILDING ("Building"),
+    DATEREQUESTED ("Date Requested");
 
 
     private final String name;

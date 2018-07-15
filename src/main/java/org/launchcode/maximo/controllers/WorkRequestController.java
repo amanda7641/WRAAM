@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Controller
 @RequestMapping("workrequest")
@@ -33,6 +34,7 @@ public class WorkRequestController {
 
         model.addAttribute("title", "Work Request");
         model.addAttribute(new SearchForm());
+        // TODO - might be better looking to have search fields built into table for each column
         model.addAttribute("workRequests", workRequestDao.findAll());
         return "workRequest/index";
     }
@@ -49,7 +51,7 @@ public class WorkRequestController {
                 if(workRequest.getDescription().toLowerCase().contains(searchForm.getKeyword().toLowerCase())){
                     filteredWorkRequests.add(workRequest);
                 }
-                else if (Integer.toString(workRequest.getId()).contains(searchForm.getKeyword().toLowerCase())){
+                else if (workRequest.getDateRequested().toString().contains(searchForm.getKeyword().toLowerCase())){
                     filteredWorkRequests.add(workRequest);
                 }
                 else if(workRequest.getBuilding().getName().toLowerCase().contains(searchForm.getKeyword())){
@@ -64,8 +66,8 @@ public class WorkRequestController {
         else {
             for(WorkRequest workRequest : allWorkRequests){
                 switch(searchForm.getSearchField()) {
-                    case NUMBER:
-                        if (Integer.toString(workRequest.getId()).contains(searchForm.getKeyword())) {
+                    case DATEREQUESTED:
+                        if (workRequest.getDateRequested().toString().contains(searchForm.getKeyword().toLowerCase())){
                             filteredWorkRequests.add(workRequest);
                         }
                         break;

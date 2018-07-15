@@ -12,9 +12,24 @@
 
 <form method="post" style="max-width:600px;" th:object="${workRequest}">
     <div class="form-group">
+        <label th:for="dateRequested">Date Requested</label>
+        <input class="form-control" th:field="*{dateRequested}" th:value="workRequest.dateRequested"/>
+        <span th:errors="*{dateRequested}" class="error"></span>
+    </div>
+    <div class="form-group">
         <label th:for="description">Description</label>
         <input class="form-control" th:field="*{description}" />
         <span th:errors="*{description}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="reportedBy">Reported By</label>
+        <input class="form-control" th:field="*{reportedBy}" />
+        <span th:errors="*{reportedBy}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="contactNumber">Contact Number</label>
+        <input class="form-control" th:field="*{contactNumber}" />
+        <span th:errors="*{contactNumber}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="building">Building</label>

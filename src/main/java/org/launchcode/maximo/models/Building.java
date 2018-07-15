@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+
 import java.util.List;
 
 @Entity
@@ -13,11 +14,12 @@ public class Building {
     @GeneratedValue
     private int id;
 
+
     @NotNull
     @Size(min=1, max=15)
     private String name;
 
-    private int age;
+    private int yearBuilt;
 //    private List<Department> departments;
 
     @OneToMany
@@ -44,12 +46,12 @@ public class Building {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public int getYearBuilt() {
+        return yearBuilt;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setYearBuilt(int yearBuilt) {
+        this.yearBuilt = yearBuilt;
     }
 
     public List<WorkRequest> getWorkRequests() {
