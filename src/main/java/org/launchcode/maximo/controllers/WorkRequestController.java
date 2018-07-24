@@ -32,7 +32,7 @@ public class WorkRequestController {
     @RequestMapping(value="")
     public String index(Model model){
 
-        model.addAttribute("title", "Work Request");
+        model.addAttribute("title", "Work Requests");
         model.addAttribute(new SearchForm());
         // TODO - might be better looking to have search fields built into table for each column
         model.addAttribute("workRequests", workRequestDao.findAll());

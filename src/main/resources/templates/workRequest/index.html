@@ -3,28 +3,11 @@
 <head th:replace="fragments :: head"></head>
 
 <body class="container">
-    <!--This was when I was trying to use DataTables plugin, not so easy -->
-    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" />
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script>
-        $(document).ready( function () {
 
-            var data = workRequests
-
-            $('#workRequestTable').DataTable({
-                data: data,
-                columns: [
-                    {data: 'description'},
-                    {data: 'building'}
-                ],
-                ordering: true
-            });
-        } );
-    </script>-->
-
-<h1 th:text="${title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
+
+<h1 th:text="${title}">Default Title</h1>
 
 <br />
 

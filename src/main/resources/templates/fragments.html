@@ -2,20 +2,55 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="head">
     <meta charset="UTF-8"/>
-    <title th:text="${title}">Work Request</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="../js/custom.js"></script>
+    <link href="../css/custom.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous" />
 
 </head>
 <body>
 
-<nav th:fragment="navigation">
-    <a th:href="@{/workrequest}">Work Requests</a> |
-    <a th:href="@{/workrequest/add}">New Work Request</a> |
-    <a th:href="@{/buildings}">Buildings</a>
-</nav>
+<div id="wrapper" class="animate"  th:fragment="navigation">
+    <nav class="navbar header-top fixed-top navbar-expand-lg navbar-dark bg-dark" >
+        <span class="navbar-toggler-icon leftmenutrigger"></span>
+        <a class="navbar-brand" href="#">Manager</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav animate side-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/workrequest}">Work Requests</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/buildings}">Buildings</a>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/workrequest/add}">New Work Requests</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/buildings/add}">New Building</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">New User</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-md-auto d-md-flex">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
 
 </body>
 </html>

@@ -28,7 +28,7 @@ public class BuildingController {
 
     @RequestMapping(value="add")
     public String displayAddBuildingForm(Model model){
-        model.addAttribute("title", "Add Building");
+        model.addAttribute("title", "New Building");
         model.addAttribute(new Building());
         return "buildings/add";
     }
