@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Date;
 
 @Controller
 @RequestMapping("workrequest")
@@ -29,6 +28,7 @@ public class WorkRequestController {
     @Autowired
     private BuildingDao buildingDao;
 
+    //Display Work Request Index automatically
     @RequestMapping(value="")
     public String index(Model model){
 
@@ -39,6 +39,7 @@ public class WorkRequestController {
         return "workRequest/index";
     }
 
+    //Search through Work Request Index
     @RequestMapping(value = "", method = RequestMethod.POST)
     public String indexSearch(Model model, @ModelAttribute SearchForm searchForm){
 
@@ -58,7 +59,7 @@ public class WorkRequestController {
                     filteredWorkRequests.add(workRequest);
                 }
             }
-            model.addAttribute("title", "Work Request");
+            model.addAttribute("title", "Work Requests");
             model.addAttribute(new SearchForm());
             model.addAttribute("workRequests", filteredWorkRequests);
             return "workRequest/index";
@@ -86,12 +87,13 @@ public class WorkRequestController {
 
             }
         }
-        model.addAttribute("title", "Work Request");
+        model.addAttribute("title", "Work Requests");
         model.addAttribute(new SearchForm());
         model.addAttribute("workRequests", filteredWorkRequests);
         return "workRequest/index";
     }
 
+    //Display new work request form
     @RequestMapping(value="add", method = RequestMethod.GET)
     public String displayAddForm(Model model){
 
@@ -102,6 +104,7 @@ public class WorkRequestController {
         return "workRequest/add";
     }
 
+    //Process the new work request form and redirect to index if it has no errors
     @RequestMapping(value="add", method = RequestMethod.POST)
     public String processAddForm(Model model, @ModelAttribute @Valid WorkRequest workRequest, Errors errors, @RequestParam int buildingId){
         if (errors.hasErrors()){
