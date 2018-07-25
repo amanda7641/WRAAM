@@ -14,11 +14,6 @@
 <div>
 <form method="post" style="max-width:600px;" th:object="${workRequest}">
     <div class="form-group">
-        <label th:for="dateRequested">Date Requested</label>
-        <input class="form-control" th:field="*{dateRequested}" th:value="workRequest.dateRequested"/>
-        <span th:errors="*{dateRequested}" class="error"></span>
-    </div>
-    <div class="form-group">
         <label th:for="description">Description</label>
         <input class="form-control" th:field="*{description}" />
         <span th:errors="*{description}" class="error"></span>
@@ -43,7 +38,7 @@
         <span th:errors="*{building}" class="error"></span>
     </div>
 
-    <input type="submit" value="Add" />
+    <input type="submit" value="Save" />
 </form>
 </div>
 

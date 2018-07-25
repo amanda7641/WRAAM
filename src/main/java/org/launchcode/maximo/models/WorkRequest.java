@@ -8,19 +8,14 @@ import java.util.Date;
 @Entity
 public class WorkRequest {
 
-    // TODO - add work order number field, dependent on id
-    // and add more fields when prepared
-    // should be able to make as complete - need boolean value
-
     @Id
     @GeneratedValue
     private int id;
 
-    @NotNull
     private Date dateRequested;
 
     @NotNull
-    @Size(min=1, max=30)
+    @Size(min=1, max=75)
     private String description;
 
     @NotNull
@@ -28,18 +23,23 @@ public class WorkRequest {
     private String reportedBy;
 
     @NotNull
-    @Size(min=1, max=30)
+    @Size(min=1, max=20)
     private String contactNumber;
 
     @ManyToOne
     private Building building;
 
+    private StatusType status;
+
     public WorkRequest(){
         this.dateRequested = new Date();
+        this.status = StatusType.INPRG;
     }
 
-    public WorkRequest(String description){
+    public WorkRequest(String description, String reportedBy, String contactNumber){
         this.description = description;
+        this.reportedBy = reportedBy;
+        this.contactNumber = contactNumber;
     }
 
     public int getId() {
@@ -84,5 +84,13 @@ public class WorkRequest {
 
     public void setBuilding(Building building) {
         this.building = building;
+    }
+
+    public StatusType getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusType status) {
+        this.status = status;
     }
 }

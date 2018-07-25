@@ -37,16 +37,18 @@
     <table id="workRequestTable" class="table table-striped">
         <thead>
             <tr>
+                <th>Date Requested</th>
                 <th>Description</th>
                 <th>Building</th>
-                <th>Date Requested</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="workRequest : ${workRequests}">
+                <td th:text="${workRequest.dateRequested}"></td>
                 <td th:text="${workRequest.description}"></td>
                 <td th:text="${workRequest.building.name}"></td>
-                <td th:text="${workRequest.dateRequested}"></td>
+                <td th:text="${workRequest.status.status}"></td>
             </tr>
         </tbody>
     </table>
