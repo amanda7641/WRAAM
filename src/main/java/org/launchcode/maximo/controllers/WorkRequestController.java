@@ -1,19 +1,18 @@
 package org.launchcode.maximo.controllers;
 
 import org.launchcode.maximo.models.Building;
+import org.launchcode.maximo.models.StatusType;
 import org.launchcode.maximo.models.WorkRequest;
 import org.launchcode.maximo.models.WorkRequestFieldType;
 import org.launchcode.maximo.models.data.BuildingDao;
 import org.launchcode.maximo.models.data.WorkRequestDao;
+import org.launchcode.maximo.models.forms.EditForm;
 import org.launchcode.maximo.models.forms.SearchForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -91,6 +90,34 @@ public class WorkRequestController {
         model.addAttribute(new SearchForm());
         model.addAttribute("workRequests", filteredWorkRequests);
         return "workRequest/index";
+    }
+
+    //Display individual work request with form for changing status
+    @RequestMapping(value="view/{id}", method = RequestMethod.GET)
+    public String viewWorkRequest(Model model, @PathVariable("id") int workRequestId){
+        WorkRequest workRequest = workRequestDao.findOne(workRequestId);
+        model.addAttribute("workRequest", workRequest);
+        model.addAttribute(new EditForm(workRequest));
+        model.addAttribute("title", "Work Request Detail");
+
+        return "workRequest/view";
+    }
+
+    //Process change of status from individual view and send to index
+    @RequestMapping(value="view", method = RequestMethod.POST)
+    public String editWorkRequest(@ModelAttribute EditForm editForm, Errors errors, Model model){
+        WorkRequest workRequest = editForm.getWorkRequest();
+
+        if (errors.hasErrors()){
+            model.addAttribute("workRequest", workRequest);
+            model.addAttribute("title", "Work Request Detail");
+
+            return "workRequest/view/" + workRequest.getId();
+        }
+
+        workRequest.setStatus(editForm.getStatusField());
+        workRequestDao.save(workRequest);
+        return "redirect:";
     }
 
     //Display new work request form

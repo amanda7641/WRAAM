@@ -29,6 +29,7 @@ public class WorkRequest {
     @ManyToOne
     private Building building;
 
+    @NotNull
     private StatusType status;
 
     public WorkRequest(){

@@ -45,10 +45,10 @@
         </thead>
         <tbody>
             <tr th:each="workRequest : ${workRequests}">
-                <td th:text="${workRequest.dateRequested}"></td>
-                <td th:text="${workRequest.description}"></td>
-                <td th:text="${workRequest.building.name}"></td>
-                <td th:text="${workRequest.status.status}"></td>
+                <td><a th:href="@{/workrequest/view/{id}(id=${workRequest.getId()})}"  th:text="${workRequest.dateRequested}"></a></td>
+                <td><a th:href="@{/workrequest/view/{id}(id=${workRequest.getId()})}"  th:text="${workRequest.description}"></a></td>
+                <td><a th:href="@{/workrequest/view/{id}(id=${workRequest.getId()})}"  th:text="${workRequest.building.name}"></a></td>
+                <td><a th:href="@{/workrequest/view/{id}(id=${workRequest.getId()})}"  th:text="${workRequest.status.status}"></a></td>
             </tr>
         </tbody>
     </table>

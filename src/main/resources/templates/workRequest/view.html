@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1 th:text="${title}">Default Title</h1>
+
+<br />
+
+<div>
+    <form method="post" style="max-width:600px;" th:object="${editForm}" th:action="@{/workrequest/view}" >
+        <div class="form-group" >
+            <input type="hidden" name="workRequest" th:field="*{workRequest}" th:value="${workRequest}" />
+        </div>
+        <div class="form-group">
+            <label th:for="description">Description</label>
+            <input class="form-control" th:field="${workRequest.description}" readonly="readonly"/>
+        </div>
+        <div class="form-group">
+            <label th:for="reportedBy">Reported By</label>
+            <input class="form-control" th:field="${workRequest.reportedBy}" readonly="readonly"/>
+        </div>
+        <div class="form-group">
+            <label th:for="contactNumber">Contact Number</label>
+            <input class="form-control" th:field="${workRequest.contactNumber}" readonly="readonly"/>
+        </div>
+        <div class="form-group">
+            <label th:for="building">Building</label>
+            <input class="form-control" th:field="${workRequest.building.name}" readonly="readonly" />
+        </div>
+        <hr/>
+        <div class="form-group">
+            <label th:for="dateRequested">Date Requested</label>
+            <input class="form-control" th:field="${workRequest.dateRequested}"  readonly="readonly"/>
+        </div>
+        <div class="form-group">
+            <label th:for="statusField">Status</label>
+            <select class="form-control" th:field="*{statusField}">
+                <option th:each="field : *{fields}"
+                        th:value="${field}" th:text="${field}">
+
+                </option>
+            </select>
+        </div>
+        <input type="submit" value="Save" />
+    </form>
+</div>
+
+</body>
+</html>
