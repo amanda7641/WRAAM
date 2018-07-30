@@ -34,7 +34,21 @@ MySQL
 Bootstrap
 
 ### What I'll Have to Learn
-I will have to learn how to create administrator accounts that create and edit users, as well as have editing capabilities of buildings in the future. I will also need to figure out how to properly allow a user to select a building. Using a dropdown is an option, but on a larger campus making a search/autopopulate connected to the buildings would be better. I'd like to connect using API's into the project, but I have no idea how yet, it's just something I would like to learn.
+I will have to learn how to edit a work request through an additional form, this will
+allow the user to update information on the work request, like the status.
+Learning how to create administrator accounts that create and edit users would also benefit
+the functionality of WRAAM.
+I could also learn how to properly allow a user to select a building.
+Using a dropdown is an option, but on a larger campus making a search/autopopulate
+connected to the buildings would be better.
+
+### Wireframes
+
+![Login WireFrame](/wireframe/login.jpg)
+![Navbar WireFrame](/wireframe/navbar.jpg)
+![Add Work Request WireFrame](/wireframe/add_work_request.jpg)
+![Work Request Index Table](/wireframe/work_request_table.jpg)
+![View a Work Request](/wireframe/view_work_request.jpg)
 
 ### Project Tracker
 [Story Mapping/User Story](https://www.pivotaltracker.com/n/projects/2184785)

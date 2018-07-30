@@ -2,34 +2,51 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body class="container">
+<body class="container" >
 
+<div class="mx-auto" style="margin-top: 25px;">
+    <div class="row">
+        <div class="col-5">
 
-
-<h1 th:text="${title}">Default Title</h1>
-
-<br />
-
-<div>
-    <form method="post" style="max-width:600px;" th:object="${loginForm}">
-        <div class="form-group">
-            <label th:for="username">Username</label>
-            <input class="form-control" th:field="*{username}" />
-            <span th:errors="*{username}" class="error"></span>
         </div>
-        <div class="form-group">
-            <label th:for="password">Password</label>
-            <input class="form-control" th:field="*{password}" type="password"/>
-            <span th:errors="*{password}" class="error"></span>
+        <div class="col-6">
+            <h1 th:text="${title}">Default Title</h1>
+
+            <br />
         </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-3">
+            <img src="/../images/mengerSponge.png" />
+        </div>
+        <div class="col-6">
+            <form method="post" style="max-width:600px;" th:object="${loginForm}">
+                <div class="form-group">
+                    <label th:for="username">Username</label>
+                    <input class="form-control" th:field="*{username}" />
+                    <span th:errors="*{username}" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <label th:for="password">Password</label>
+                    <input class="form-control" th:field="*{password}" type="password"/>
+                    <span th:errors="*{password}" class="error"></span>
+                </div>
 
 
-        <input type="submit" value="Login" />
-    </form>
+                <input type="submit" value="Login" />
+            </form>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-5"></div>
+        <div class="col-6">
+        <a th:href="@{/register}">Register</a>
+        </div>
+    </div>
 </div>
-<div>
-    <a th:href="@{/register}">Register</a>
-</div>
-
 </body>
 </html>
