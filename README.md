@@ -40,7 +40,7 @@ connected to the buildings would be better.
 ![Login WireFrame](/wireframes/login.jpg)
 ![Navbar WireFrame](/wireframes/navbar.jpg)
 ![Add Work Request WireFrame](/wireframes/add_work_request.jpg)
-![Work Request Index Table](/wireframse/work_request_table.jpg)
+![Work Request Index Table](/wireframes/work_request_table.jpg)
 ![View a Work Request](/wireframes/view_work_request.jpg)
 
 ### Project Tracker
