@@ -1,10 +1,3 @@
-# Project Outline
-For this assignment, you will submit a high-level outline of your project. This can, and likely will, change over time. In particular, your mentor will provide feedback and direction and feedback to help sharpen your ideas. So don't worry if you feel unsure about some aspects of the outline, or if you have to change some things later.
-
-## Assignment Description
-[Project Outline Assignment](https://education.launchcode.org/liftoff/assignments/project-outline/)
-
-## Submission Instructions
 
 ### Overview
 WRAAM (Work Request and Asset Manager) will allow administrator created users to create and search for work requests, marking them as complete when the work is finished. This website will be directed toward the needs of a small University or college, focusing on cutting costs with a self-owned application and solving issues that cannot be resolved with a web application not specifically created for their needs. 
@@ -44,11 +37,11 @@ connected to the buildings would be better.
 
 ### Wireframes
 
-![Login WireFrame](/wireframe/login.jpg)
-![Navbar WireFrame](/wireframe/navbar.jpg)
-![Add Work Request WireFrame](/wireframe/add_work_request.jpg)
-![Work Request Index Table](/wireframe/work_request_table.jpg)
-![View a Work Request](/wireframe/view_work_request.jpg)
+![Login WireFrame](/wireframes/login.jpg)
+![Navbar WireFrame](/wireframes/navbar.jpg)
+![Add Work Request WireFrame](/wireframes/add_work_request.jpg)
+![Work Request Index Table](/wireframse/work_request_table.jpg)
+![View a Work Request](/wireframes/view_work_request.jpg)
 
 ### Project Tracker
 [Story Mapping/User Story](https://www.pivotaltracker.com/n/projects/2184785)
