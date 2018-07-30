@@ -24,8 +24,9 @@ public class AuthenticationController extends AbstractController {
     }
 
     @RequestMapping(value="/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute @Valid RegisterForm registerForm, Errors errors, HttpServletRequest request) {
+    public String register(@ModelAttribute @Valid RegisterForm registerForm, Errors errors, HttpServletRequest request, Model model) {
         if (errors.hasErrors()){
+            model.addAttribute("title", "Register");
             return "user/register";
         }
 
@@ -33,6 +34,7 @@ public class AuthenticationController extends AbstractController {
 
         if(existingUser != null){
             errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
+            model.addAttribute("title", "Register");
             return "user/register";
         }
 
@@ -51,9 +53,10 @@ public class AuthenticationController extends AbstractController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@ModelAttribute @Valid LoginForm loginForm, Errors errors, HttpServletRequest request){
+    public String login(@ModelAttribute @Valid LoginForm loginForm, Errors errors, HttpServletRequest request, Model model){
 
         if(errors.hasErrors()){
+            model.addAttribute("title", "Log In");
             return "user/login";
         }
 
@@ -62,11 +65,13 @@ public class AuthenticationController extends AbstractController {
 
         if (theUser == null){
             errors.rejectValue("username", "user.invalid", "The given username does not exist.");
+            model.addAttribute("title", "Log In");
             return "user/login";
         }
 
         if (!theUser.isMatchingPassword(password)){
             errors.rejectValue("password", "password.invalid", "Invalid Password.");
+            model.addAttribute("title", "Log In");
             return "user/login";
         }
 
