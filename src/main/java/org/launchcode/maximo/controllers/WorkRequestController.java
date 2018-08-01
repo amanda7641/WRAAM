@@ -46,46 +46,21 @@ public class WorkRequestController {
 
         ArrayList<WorkRequest> filteredWorkRequests = new ArrayList<>();
 
-        if(searchForm.getSearchField().equals(WorkRequestFieldType.ALL)){
-            for (WorkRequest workRequest : allWorkRequests){
-                if(workRequest.getDescription().toLowerCase().contains(searchForm.getKeyword().toLowerCase())){
-                    filteredWorkRequests.add(workRequest);
-                }
-                else if (workRequest.getDateRequested().toString().contains(searchForm.getKeyword().toLowerCase())){
-                    filteredWorkRequests.add(workRequest);
-                }
-                else if(workRequest.getBuilding().getName().toLowerCase().contains(searchForm.getKeyword())){
+        if(searchForm.getSearchField().equals(WorkRequestFieldType.DESCRIPTION)){
+            for(WorkRequest workRequest : allWorkRequests) {
+                if (workRequest.getDescription().toLowerCase().contains(searchForm.getKeyword().toLowerCase())) {
                     filteredWorkRequests.add(workRequest);
                 }
             }
-            model.addAttribute("title", "Work Requests");
-            model.addAttribute(new SearchForm());
-            model.addAttribute("workRequests", filteredWorkRequests);
-            return "workRequest/index";
         }
         else {
             for(WorkRequest workRequest : allWorkRequests){
-                switch(searchForm.getSearchField()) {
-                    case DATEREQUESTED:
-                        if (workRequest.getDateRequested().toString().contains(searchForm.getKeyword().toLowerCase())){
-                            filteredWorkRequests.add(workRequest);
-                        }
-                        break;
-                    case BUILDING:
-                        if (workRequest.getBuilding().getName().toLowerCase().contains(searchForm.getKeyword())){
-                            filteredWorkRequests.add(workRequest);
-                        }
-                        break;
-                    case DESCRIPTION:
-                        if(workRequest.getDescription().toLowerCase().contains(searchForm.getKeyword().toLowerCase())) {
-                            filteredWorkRequests.add(workRequest);
-                        }
-                        break;
-
+                if (workRequest.getBuilding().getName().toLowerCase().contains(searchForm.getKeyword().toLowerCase())){
+                    filteredWorkRequests.add(workRequest);
                 }
-
             }
         }
+
         model.addAttribute("title", "Work Requests");
         model.addAttribute(new SearchForm());
         model.addAttribute("workRequests", filteredWorkRequests);

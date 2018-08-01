@@ -6,7 +6,7 @@ public class SearchForm {
 
     private WorkRequestFieldType[] fields = WorkRequestFieldType.values();
 
-    private WorkRequestFieldType searchField = WorkRequestFieldType.ALL;
+    private WorkRequestFieldType searchField = WorkRequestFieldType.DESCRIPTION;
 
     private String keyword;
 
