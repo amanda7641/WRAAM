@@ -47,8 +47,8 @@
             <tr th:each="workRequest : ${workRequests}">
                 <td><a th:href="@{/workrequest/view/{id}(id=${workRequest.getId()})}"  th:text="${workRequest.dateRequested}"></a></td>
                 <td><a th:href="@{/workrequest/view/{id}(id=${workRequest.getId()})}"  th:text="${workRequest.description}"></a></td>
-                <td><a th:href="@{/workrequest/view/{id}(id=${workRequest.getId()})}"  th:text="${workRequest.building.name}"></a></td>
-                <td><a th:href="@{/workrequest/view/{id}(id=${workRequest.getId()})}"  th:text="${workRequest.status.status}"></a></td>
+                <td><a th:text="${workRequest.building.name}"></a></td>
+                <td><a th:text="${workRequest.status.status}"></a></td>
             </tr>
         </tbody>
     </table>

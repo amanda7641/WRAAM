@@ -35,6 +35,9 @@ I could also learn how to properly allow a user to select a building.
 Using a dropdown is an option, but on a larger campus making a search/autopopulate
 connected to the buildings would be better.
 
+### Project Tracker
+[Story Mapping/User Story](https://www.pivotaltracker.com/n/projects/2184785)
+
 ### Wireframes
 
 ![Login WireFrame](/wireframes/login.jpg)
@@ -42,9 +45,6 @@ connected to the buildings would be better.
 ![Add Work Request WireFrame](/wireframes/add_work_request.jpg)
 ![Work Request Index Table](/wireframes/work_request_table.jpg)
 ![View a Work Request](/wireframes/view_work_request.jpg)
-
-### Project Tracker
-[Story Mapping/User Story](https://www.pivotaltracker.com/n/projects/2184785)
 
 ### GitHub
 [Liftoff Repository](https://github.com/amanda7641/liftoff-assignments)
