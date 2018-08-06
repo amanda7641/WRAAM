@@ -1,19 +1,27 @@
 
 ### Overview
-WRAAM (Work Request and Asset Manager) will allow administrator created users to create and search for work requests, marking them as complete when the work is finished. This website will be directed toward the needs of a small University or college, focusing on cutting costs with a self-owned application and solving issues that cannot be resolved with a web application not specifically created for their needs. 
+WRAAM (Work Request and Asset Manager) will allow administrator created users to create and search for work requests,
+marking them as complete when the work is finished. This website will be directed toward the needs of a small education
+or business campus, focusing on cutting costs with a self-owned application and solving issues that cannot be resolved
+with a web application not specifically created for their needs.
 
 ### Features
--**Save and Edit Work Requests:** User should be able to create and edit work requests so that other users can view what work needs to be done and get updated information.
+-**Save and Edit Work Requests:** User should be able to create and edit the status of work requests so that other users
+can view what work needs to be done and get updated information.
 
 -**Search Work Requests:** Users will be able to view all work requests and filter them to find the work request that they are looking for.
 
 -**User login:** Users can login once an administrator has created an account for them. Nothing should be accessible without first logging in. 
 
--**Add Users:** Adminstrators should be able to add new users as more employees are hired, this way they have control over who can access the information. Later adding a delete user option would be great.
+-**Add Users:** Administrators should be able to add new users as more employees are hired, this way they have control
+over who can access the information. This means that a user should also be able to change their password, since the original will be
+initialized by the administrator. Later adding a delete user, or deactivate user, option would be helpful.
 
--**Search and View Buildings:** Users will be able to view and search through buildings to find more detailed information, these buildings cannot be edited by users. Only an administrator can add or edit buildings.
+-**View Buildings and Add:** Users will be able to view the list of buildings that are in the database, these buildings cannot
+be edited by users. Only an administrator can add new buildings.
 
--**Home Page/Dashboard:** User should have a landing page that makes the web application more accessible and easier to use. This would include adding a graph of work orders in each building if there is time.
+-**Home Page/Dashboard:** User should have a landing page that makes the web application more accessible and easier to use.
+This would include adding a graph of work orders in each building if there is time.
 
 ### Technologies
 Java 8
@@ -25,6 +33,8 @@ Thymeleaf
 MySQL
 
 Bootstrap
+
+Javascript
 
 ### What I'll Have to Learn
 I will have to learn how to edit a work request through an additional form, this will
