@@ -1,6 +1,7 @@
 package org.launchcode.maximo;
 
 import org.launchcode.maximo.controllers.AbstractController;
+import org.launchcode.maximo.models.Role;
 import org.launchcode.maximo.models.User;
 import org.launchcode.maximo.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,10 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
         //Publicly available pages
-        List<String> nonAuthPages = Arrays.asList("/login", "/register");
+        List<String> nonAuthPages = Arrays.asList("/login");
+
+        //Pages available only to Admin
+        List<String> adminPages = Arrays.asList("/register", "/buildings/add");
 
         //Require sign-in for all pages not in nonAuthPages
         if( !nonAuthPages.contains(request.getRequestURI())){
@@ -30,6 +34,12 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
                 User user = userDao.findOne(userId);
 
                 if(user != null){
+                    if(user.getRole().equals(Role.USER)){
+                        if(adminPages.contains(request.getRequestURI())) {
+                            response.sendRedirect("/workrequest");
+                            return true;
+                        }
+                    }
                     return  true;
                 }
             }

@@ -17,6 +17,7 @@
     <nav class="navbar header-top fixed-top navbar-expand-lg navbar-dark bg-dark" >
         <span class="navbar-toggler-icon leftmenutrigger"></span>
         <a class="navbar-brand" href="#">WRAAM</a>
+        <a style="color:#fff;" class="navbar-welcome">Welcome, <span th:text="${user.username} + '!'"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,12 +32,21 @@
                 </li>
                 <li class="dropdown-divider"></li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/workrequest/add}">New Work Requests</a>
+                    <a class="nav-link" th:href="@{/workrequest/add}">New Work Request</a>
                 </li>
+                <!-- links hidden for users that are not admins -->
+                <li class="nav-item" th:switch="${user.role.status}">
+                    <a th:case="Administrator" class="nav-link" th:href="@{/buildings/add}">New Building</a>
+                    <a th:case="*"></a>
+                </li>
+                <li class="nav-item" th:switch="${user.role.status}">
+                    <a th:case="Administrator" class="nav-link" th:href="@{/register}">Register a New User</a>
+                    <a th:case="*"></a>
+                </li>
+                <li class="dropdown-divider"></li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/buildings/add}">New Building</a>
+                    <a class="nav-link" th:href="@{/updateaccount}">Change Your Password</a>
                 </li>
-
             </ul>
             <ul class="navbar-nav ml-md-auto d-md-flex">
                 <li class="nav-item">

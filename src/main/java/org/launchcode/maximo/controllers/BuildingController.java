@@ -14,11 +14,9 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("buildings")
-public class BuildingController {
+public class BuildingController extends AbstractController {
 
-    @Autowired
-    private BuildingDao buildingDao;
-
+    //display index table of buildings
     @RequestMapping(value="")
     public String index(Model model){
         model.addAttribute("title", "Buildings");
@@ -26,6 +24,7 @@ public class BuildingController {
         return "buildings/index";
     }
 
+    //allows admins to add new buildings
     @RequestMapping(value="add")
     public String displayAddBuildingForm(Model model){
         model.addAttribute("title", "New Building");

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<br />
+
+<div class="mx-auto" style="margin-top: 25px;">
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6">
+            <h1 th:text="${title}">Default Title</h1>
+
+            <br />
+
+            <div>
+                <form method="post" style="max-width:600px;" th:object="${changePasswordForm}">
+                    <div class="form-group" >
+                        <input type="hidden" name="user" th:field="*{user}" th:value="${user}" />
+                    </div>
+                    <div class="form-group">
+                        <label th:for="currentPassword">Current Password</label>
+                        <input class="form-control" th:field="*{currentPassword}" type="password" />
+                        <span th:errors="*{currentPassword}" class="error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label th:for="password">New Password</label>
+                        <input class="form-control" th:field="*{password}" type="password"/>
+                        <span th:errors="*{password}" class="error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label th:for="verifyPassword">Verify New Password</label>
+                        <input class="form-control" th:field="*{verifyPassword}" type="password"/>
+                        <span th:errors="*{verifyPassword}" class="error"></span>
+                    </div>
+
+
+                    <input type="submit" value="Change" />
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

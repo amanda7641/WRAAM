@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping("workrequest")
-public class WorkRequestController {
+public class WorkRequestController extends AbstractController {
 
     @Autowired
     private WorkRequestDao workRequestDao;
@@ -33,7 +33,6 @@ public class WorkRequestController {
 
         model.addAttribute("title", "Work Requests");
         model.addAttribute(new SearchForm());
-        // TODO - might be better looking to have search fields built into table for each column
         model.addAttribute("workRequests", workRequestDao.findAll());
         return "workRequest/index";
     }

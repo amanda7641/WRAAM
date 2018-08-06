@@ -4,6 +4,7 @@
 
 <body class="container">
 
+<nav th:replace="fragments :: navigation"></nav>
 
 <div class="mx-auto" style="margin-top: 25px;">
     <div class="row">
@@ -32,11 +33,19 @@
                     <input class="form-control" th:field="*{verifyPassword}" type="password"/>
                     <span th:errors="*{verifyPassword}" class="error"></span>
                 </div>
+                <div class="form-group">
+                    <label th:for="role">Access</label>
+                    <select class="form-control" th:field="*{role}">
+                        <option th:each="field : *{fields}"
+                                th:value="${field}" th:text="${field}">
 
+                        </option>
+                    </select>
+                    <span th:errors="*{role}" class="error"></span>
+                </div>
 
                 <input type="submit" value="Register" />
             </form>
-            <a th:href="@{/login}">Log In</a>
         </div>
         </div>
     </div>
