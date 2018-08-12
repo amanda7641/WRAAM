@@ -5,3 +5,13 @@ $( document ).ready(function() {
      e.preventDefault();
     });
 });
+
+
+$( document ).ready(function() {
+    $("#descriptionInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#workRequestData tr").filter(function(){
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});

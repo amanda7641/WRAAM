@@ -13,23 +13,7 @@
 
 
 <div>
-    <form method="post" th:object="${searchForm}">
-        <h2>Search by:</h2>
-
-        <ul class="form-group">
-            <li th:each="field : *{fields}" style="list-style-type:none;display:inline-block;padding-right:5px;padding-left:5px;">
-                <input type="radio" th:field="*{searchField}" th:value="${field}" th:checked="${field == searchField}"/>
-                <label th:for="${#ids.prev('searchField')}" th:text="${field.name}"></label>
-            </li>
-        </ul>
-
-        <div class="form-group">
-            <label th:for="keyword">Keyword</label>
-            <input class="form-control" th:field="*{keyword}" />
-        </div>
-
-
-    </form>
+    <input class="form-control" id="descriptionInput" type="text" placeholder="Search..." />
 </div>
 
 <br/>
@@ -42,8 +26,14 @@
                 <th>Building</th>
                 <th>Status</th>
             </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
         </thead>
-        <tbody>
+        <tbody id="workRequestData">
             <tr th:each="workRequest : ${workRequests}">
                 <td><a th:href="@{/workrequest/view/{id}(id=${workRequest.getId()})}"  th:text="${workRequest.dateRequested}"></a></td>
                 <td><a th:href="@{/workrequest/view/{id}(id=${workRequest.getId()})}"  th:text="${workRequest.description}"></a></td>
