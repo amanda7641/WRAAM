@@ -29,8 +29,8 @@
         <span th:errors="*{contactNumber}" class="error"></span>
     </div>
     <div class="form-group">
-        <label th:for="building">Building</label>
-        <select name="buildingId">
+        <select class="buildingSelect" name="buildingId">
+            <option></option>
             <option th:each="building : ${buildings}"
                     th:text="${building.name}"
                     th:value="${building.id}"></option>

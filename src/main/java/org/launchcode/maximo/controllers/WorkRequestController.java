@@ -114,7 +114,15 @@ public class WorkRequestController extends AbstractController {
             return "workRequest/add";
         }
 
+
         Building build = buildingDao.findOne(buildingId);
+
+        if(build == null){
+            model.addAttribute("title", "New Work Request");
+            model.addAttribute("buildings", buildingDao.findAll());
+            return "workRequest/add";
+        }
+
         workRequest.setBuilding(build);
         workRequestDao.save(workRequest);
         return "redirect:";

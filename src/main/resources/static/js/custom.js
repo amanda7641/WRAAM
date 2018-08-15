@@ -15,3 +15,12 @@ $( document ).ready(function() {
         });
     });
 });
+
+$( document ).ready(function() {
+    $('.buildingSelect').select2({
+        placeholder: "Select a building",
+        allowClear: true
+    });
+});
+
+
