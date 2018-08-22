@@ -33,11 +33,12 @@ public class WorkRequest {
     private StatusType status;
 
     public WorkRequest(){
-        this.dateRequested = new Date();
-        this.status = StatusType.INPRG;
+
     }
 
     public WorkRequest(String description, String reportedBy, String contactNumber){
+        this.dateRequested = new Date();
+        this.status = StatusType.INPRG;
         this.description = description;
         this.reportedBy = reportedBy;
         this.contactNumber = contactNumber;

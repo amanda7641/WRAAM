@@ -8,6 +8,7 @@ import org.launchcode.maximo.models.data.BuildingDao;
 import org.launchcode.maximo.models.data.WorkRequestDao;
 import org.launchcode.maximo.models.forms.EditForm;
 import org.launchcode.maximo.models.forms.SearchForm;
+import org.launchcode.maximo.models.forms.WorkRequestForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -99,7 +100,7 @@ public class WorkRequestController extends AbstractController {
     public String displayAddForm(Model model){
 
         model.addAttribute("title", "New Work Request");
-        model.addAttribute(new WorkRequest());
+        model.addAttribute(new WorkRequestForm());
         model.addAttribute("buildings", buildingDao.findAll());
 
         return "workRequest/add";
@@ -107,23 +108,32 @@ public class WorkRequestController extends AbstractController {
 
     //Process the new work request form and redirect to index if it has no errors
     @RequestMapping(value="add", method = RequestMethod.POST)
-    public String processAddForm(Model model, @ModelAttribute @Valid WorkRequest workRequest, Errors errors, @RequestParam int buildingId){
+    public String processAddForm(Model model, @ModelAttribute @Valid WorkRequestForm workRequestForm, Errors errors){
+        if (workRequestForm.getBuildingId() == -1){
+            model.addAttribute("title", "New Work Request");
+            model.addAttribute("buildings", buildingDao.findAll());
+            model.addAttribute("selectBuildingError", "Please select a building.");
+            return "workRequest/add";
+        }
+
         if (errors.hasErrors()){
             model.addAttribute("title", "New Work Request");
+            model.addAttribute("selectBuildingError", "Please select a building.");
             model.addAttribute("buildings", buildingDao.findAll());
             return "workRequest/add";
         }
 
 
-        Building build = buildingDao.findOne(buildingId);
+        Building building = buildingDao.findOne(workRequestForm.getBuildingId());
 
-        if(build == null){
+        if(building == null){
             model.addAttribute("title", "New Work Request");
             model.addAttribute("buildings", buildingDao.findAll());
             return "workRequest/add";
         }
 
-        workRequest.setBuilding(build);
+        WorkRequest workRequest = new WorkRequest(workRequestForm.getDescription(), workRequestForm.getReportedBy(), workRequestForm.getContactNumber());
+        workRequest.setBuilding(building);
         workRequestDao.save(workRequest);
         return "redirect:";
     }
