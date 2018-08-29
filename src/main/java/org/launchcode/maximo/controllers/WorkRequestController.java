@@ -109,12 +109,6 @@ public class WorkRequestController extends AbstractController {
     //Process the new work request form and redirect to index if it has no errors
     @RequestMapping(value="add", method = RequestMethod.POST)
     public String processAddForm(Model model, @ModelAttribute @Valid WorkRequestForm workRequestForm, Errors errors){
-        if (workRequestForm.getBuildingId() == -1){
-            model.addAttribute("title", "New Work Request");
-            model.addAttribute("buildings", buildingDao.findAll());
-            model.addAttribute("selectBuildingError", "Please select a building.");
-            return "workRequest/add";
-        }
 
         if (errors.hasErrors()){
             model.addAttribute("title", "New Work Request");
